@@ -8,14 +8,14 @@ export function useSpotlight() {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const cards = document.querySelectorAll('.card-spotlight')
-      for (const card of cards) {
+      cards.forEach((card) => {
         const rect = card.getBoundingClientRect()
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
-        
-        ;(card as HTMLElement).style.setProperty('--mouse-x', `${x}px`)
-        ;(card as HTMLElement).style.setProperty('--mouse-y', `${y}px`)
-      }
+
+          ; (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`)
+          ; (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`)
+      })
     }
 
     document.addEventListener('mousemove', handleMouseMove)
