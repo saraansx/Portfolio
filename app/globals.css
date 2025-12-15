@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --cursor-size: 20px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  cursor: default;
+}
+
+.font-mono { 
+  font-family: 'JetBrains Mono', monospace; 
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { 
+  width: 6px; 
+}
+
+::-webkit-scrollbar-track { 
+  background: #000; 
+}
+
+::-webkit-scrollbar-thumb { 
+  background: #333; 
+  border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover { 
+  background: #555; 
+}
+
+/* Utilities */
+.mask-gradient-b {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.mask-gradient-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Subtle Grid */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { 
+  transition-delay: 0.1s; 
+}
+
+.delay-200 { 
+  transition-delay: 0.2s; 
+}
+
+.delay-300 { 
+  transition-delay: 0.3s; 
+}
+
+/* Glass & Cards */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(0,0,0,1), 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.card-spotlight {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(20,20,20,0.6) 0%, rgba(10,10,10,0.4) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.04), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-spotlight:hover::before { 
+  opacity: 1; 
+}
+
+.card-spotlight::after {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card-spotlight:hover::after { 
+  opacity: 1; 
+}
+
+/* Text Effects */
+.text-shine {
+  background: linear-gradient(to right, #b0b0b0 20%, #fff 50%, #b0b0b0 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine { 
+  to { 
+    background-position: 200% center; 
+  } 
+}
+
+/* Custom Glow for Navbar */
+.text-glow-orange {
+  text-shadow: 0 0 20px rgba(249, 115, 22, 0.6), 0 0 10px rgba(249, 115, 22, 0.4);
+}
+
+/* 3D Transform Utilities */
+.perspective-1000 { 
+  perspective: 1000px; 
+}
+
+.transform-style-3d { 
+  transform-style: preserve-3d; 
+}
+
+.rotate-y-12 { 
+  transform: rotateY(12deg); 
+}
+
+.rotate-y-0 { 
+  transform: rotateY(0deg); 
+}
+
+.rotate-x-12 { 
+  transform: rotateX(12deg); 
+}
+
+/* Checkbox Custom Styling */
+.custom-checkbox:checked {
+  background-color: rgb(249 115 22);
+  border-color: rgb(249 115 22);
+}
+
+.custom-checkbox:checked + div > .task-text {
+  text-decoration: line-through;
+  color: rgb(82 82 82);
+}
+
+.custom-checkbox:checked + div > .task-sub {
+  opacity: 0.5;
+}
+
+/* Hide Scrollbar in Phone Demo */
+.hide-scrollbar::-webkit-scrollbar { 
+  display: none; 
+}
+
+.hide-scrollbar { 
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+/* Selection */
+::selection { 
+  background: rgba(249, 115, 22, 0.2); 
+  color: #fff; 
+}
+
